@@ -8,7 +8,7 @@ export default function Form() {
         <input type="text" />
         <select name="" id="">
           {Array.from({ length: 20 }, (_, i) => i + 1).map((i) => (
-            <option>{i}</option>
+            <option key={i}>{i}</option>
           ))}
         </select>
         <button>Add</button>
