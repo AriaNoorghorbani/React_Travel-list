@@ -9,6 +9,7 @@ export default function Form({ onAddItem }) {
     const enteredDes = desRef.current.value;
     const enteredQuantity = quantityRef.current.value;
     onAddItem(enteredDes, enteredQuantity);
+    desRef.current.value = "";
   }
 
   return (

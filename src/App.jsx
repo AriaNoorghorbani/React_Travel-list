@@ -17,11 +17,17 @@ function App() {
     setItems((prevItems) => [...prevItems, newItem]);
   }
 
+  function handleRemoveItem(id) {
+    setItems((prevItems) => {
+      return prevItems.filter((item) => item.id !== id);
+    });
+  }
+
   return (
     <div className="app">
       <Logo />
       <Form onAddItem={handleAddItem} />
-      <PackingList items={items} />
+      <PackingList items={items} onRemoveItem={handleRemoveItem} />
       <Stats />
     </div>
   );
