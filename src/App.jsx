@@ -32,10 +32,6 @@ function App() {
     );
   }
 
-  const totalItemsCount = items.length;
-  const packedNum = items.filter((item) => item.packed).length;
-  const percentage = Math.floor((packedNum / totalItemsCount) * 100);
-
   return (
     <div className="app">
       <Logo />
@@ -45,11 +41,7 @@ function App() {
         onRemoveItem={handleRemoveItem}
         onPacked={handlePackedItem}
       />
-      <Stats
-        totalItemsCount={totalItemsCount}
-        packedNum={packedNum}
-        percentage={percentage}
-      />
+      <Stats items={items} />
     </div>
   );
 }
