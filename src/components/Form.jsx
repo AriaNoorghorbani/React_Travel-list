@@ -1,25 +1,22 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
-export default function Form() {
-  const [description, setDescription] = useState();
+export default function Form({ onAddItem }) {
+  const desRef = useRef();
+  const quantityRef = useRef();
 
   function handleSubmit(event) {
     event.preventDefault();
-    const newItem = description;
-    console.log(newItem);
-    setDescription("");
+    const enteredDes = desRef.current.value;
+    const enteredQuantity = quantityRef.current.value;
+    onAddItem(enteredDes, enteredQuantity);
   }
 
   return (
     <div className="add-form">
       <h3>What do you need for your trip?</h3>
       <form className="add-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-        />
-        <select name="" id="">
+        <input type="text" ref={desRef} />
+        <select name="" id="" ref={quantityRef}>
           {Array.from({ length: 20 }, (_, i) => i + 1).map((i) => (
             <option key={i}>{i}</option>
           ))}

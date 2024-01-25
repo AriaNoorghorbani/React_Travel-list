@@ -22,10 +22,10 @@ const initialItems = [
   },
 ];
 
-export default function PackingList() {
+export default function PackingList({ items }) {
   return (
     <ul className="list">
-      <Item items={initialItems} />
+      <Item items={items} />
     </ul>
   );
 }
