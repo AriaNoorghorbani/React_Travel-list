@@ -7,12 +7,13 @@ import { useState } from "react";
 function App() {
   const [items, setItems] = useState([]);
 
-  function handleAddItem(enteredDes, enteredQuantity) {
+  function handleAddItem(enteredDes, enteredQuantity, packed) {
     const randomId = Math.random();
     const newItem = {
       description: enteredDes,
       quantity: enteredQuantity,
       id: randomId,
+      packed: packed,
     };
     setItems((prevItems) => [...prevItems, newItem]);
   }
@@ -23,11 +24,23 @@ function App() {
     });
   }
 
+  function handlePackedItem(id) {
+    setItems((prevState) =>
+      prevState.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  }
+
   return (
     <div className="app">
       <Logo />
       <Form onAddItem={handleAddItem} />
-      <PackingList items={items} onRemoveItem={handleRemoveItem} />
+      <PackingList
+        items={items}
+        onRemoveItem={handleRemoveItem}
+        onPacked={handlePackedItem}
+      />
       <Stats />
     </div>
   );
