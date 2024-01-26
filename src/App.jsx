@@ -13,7 +13,7 @@ function App() {
       description: enteredDes,
       quantity: enteredQuantity,
       id: randomId,
-      packed: packed,
+      packed: false,
     };
     setItems((prevItems) => [...prevItems, newItem]);
   }
