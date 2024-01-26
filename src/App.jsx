@@ -32,6 +32,11 @@ function App() {
     );
   }
 
+  function handleClearList() {
+    const confirmed = window.confirm("are you sure?");
+    if (confirmed) setItems([]);
+  }
+
   return (
     <div className="app">
       <Logo />
@@ -40,6 +45,7 @@ function App() {
         items={items}
         onRemoveItem={handleRemoveItem}
         onPacked={handlePackedItem}
+        onClearList={handleClearList}
       />
       <Stats items={items} />
     </div>
